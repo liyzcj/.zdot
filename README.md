@@ -9,6 +9,7 @@ My purpose is beautiful and easz-to-use linux.
 At first, I plan to save some system or software configuration files as above.
 
 ## Bash
+- .bashrc
 ## Zsh
 ## Vim
 
