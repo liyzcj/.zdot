@@ -1,0 +1,14 @@
+[user]
+	name = liyzcj
+	email = liyz0912@gmail.com
+[alias]
+	last = log -1 HEAD
+	tt = log --graph --oneline -10 HEAD
+	ll = log --graph --oneline
+	cam = commit -am
+	cm = commit -m
+	st = status
+[merge]
+	tool = vimdiff
+[credential]
+	helper = store

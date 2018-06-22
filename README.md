@@ -12,4 +12,5 @@ At first, I plan to save some system or software configuration files as above.
 - .bashrc
 ## Zsh
 ## Vim
-
+## Git
+- .gitconfig
