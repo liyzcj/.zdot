@@ -8,4 +8,5 @@
 source ./lib_sh/echoflags.sh
 
 bot "Hi! I'm going to install tooling and tweak your system settings. Here I go..."
+action "Installing required packages"
 
