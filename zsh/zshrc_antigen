@@ -1,5 +1,7 @@
 # AUTHOR = -- LI YAN ZHE --
 
+# ================= Variable ===============
+
 
 # ================ Utilities ===============
 # enable 256 color to make auto-suggestions look nice
@@ -10,7 +12,7 @@
 # zstyle ':completion:*:(all-|)files' ignored-patterns '*.pdf|*.exe|*.dll'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 bindkey -v                  # Use vim key bind
-
+eval $(dircolors -b $HOME/LS_COLORS)
 
 # ================ OPTION ==================
 setopt NO_BEEP              # Don't beep on errors.
@@ -36,7 +38,7 @@ alias lrt='ls -lrt'
 
 # ============ Initialize antigen ==========
 NTIGEN_MUTEX=false
-source "$HOME/.antigen/antigen/antigen.zsh"
+source "$HOME/zinux/zsh/antigen/antigen.zsh"
 
 # ====== Framework ======
 # antigen use oh-my-zsh
@@ -78,7 +80,8 @@ ZSH_HIGHLIGHT_STYLES[builtin]='fg=028'
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle zsh-users/zsh-syntax-highlighting
-
+antigen bundle mafredri/zsh-async
+antigen bundle sindresorhus/pure
 # ============ Finish antigen ==============
 antigen apply
 
