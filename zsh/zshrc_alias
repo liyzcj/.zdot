@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+###############################################################
+## This file is the alias of zsh.                             #
+## @author Li Yanzhe, 2018.                                   #
+###############################################################
+
+# enable color support of ls and also add handy aliases
+
+test -r $ZINUX_DIR/lib_sh/ls_colors && \
+	eval "$(dircolors -b $ZINUX_DIR/lib_sh/ls_colors)" \
+	|| eval "$(dircolors -b)"
+alias ls='ls --color=auto'
+#alias dir='dir --color=auto'
+#alias vdir='vdir --color=auto'
+
+alias grep='grep --color=auto'
+#alias fgrep='fgrep --color=auto'
+#alias egrep='egrep --color=auto'
+
+# ================= Alias ==================
+
+alias ll='ls -l'
+alias la='ls -al'
+alias lrt='ls -lrt'
