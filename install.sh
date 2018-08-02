@@ -98,7 +98,8 @@ ln -s $ZINUX_DIR/git/gitconfig $HOME/.gitconfig
 check_success
 
 ## change to zsh ##################################################################
-
+action "Change your default shell"
 chsh -s /bin/zsh
+bot "Installation is finished, enjoy!"
 zsh
 
