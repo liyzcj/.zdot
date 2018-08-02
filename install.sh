@@ -96,3 +96,9 @@ fi
 running "Linking ${COL_CYAN}.gitconfig"
 ln -s $ZINUX_DIR/git/gitconfig $HOME/.gitconfig
 check_success
+
+## change to zsh ##################################################################
+
+chsh -s /bin/zsh
+zsh
+
