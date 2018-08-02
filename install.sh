@@ -5,7 +5,7 @@
 # @author Li Yanzhe, 2018.                                                          #
 #####################################################################################
 
-ZINUX_DIR=$(pwd)
+ZINUX_DIR=$HOME/zinux
 BACKUP_DIR=$HOME/backup_files
 source ./lib_sh/echoflags.sh
 
@@ -27,6 +27,10 @@ do
 	sudo apt-get -y install $pac >/dev/null 2>&1
 	check_success
 done
+
+# clone dotfiles repo from github
+cd $HOME
+git clone --recurse-submodules https://github.com/liyzcj/zinux.git
 
 ## Make soft link ##################################################################
 action "Making soft links"
