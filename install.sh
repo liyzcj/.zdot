@@ -99,7 +99,13 @@ check_success
 
 ## change to zsh ##################################################################
 action "Change your default shell"
+# change your default shell
 chsh -s /bin/zsh
+# run zsh to install bundles and exit
+zsh -i -c exit
+## change the configuration (include colors) in "pure prompt"
+cp $ZINUX_DIR/zsh/pure.zsh $HOME/.antigen/bundles/sindresorhus/pure
+# cd $HOME/.antigen/bundles/sindresorhus/pure
 bot "Installation is finished, enjoy!"
 zsh
 
