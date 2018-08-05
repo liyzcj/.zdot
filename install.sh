@@ -6,12 +6,26 @@
 #####################################################################################
 
 ## Custmization ####################################################################
-ZINUX_DIR=$HOME/zinux
+ZINUX_DIR=$HOME
+BACKUP=1
 BACKUP_DIR=$HOME/backup_files
 requirement=(
 git
 zsh
 )
+## options #########################################################################
+TEMP=`getopt -o t:n --long target:,nobackup -- "$@"`
+if [ $? != 0 ] ; then echo "Options error..." >&2 ; exit 1 ; fi
+eval set -- "$TEMP"
+while true ; do
+	case "$1" in
+		-t | --target) ZINUX_DIR=$2 ; shift 2 ;;
+		-n | --nobackup) BACKUP=0 ; shift ;;
+		--) shift ; break ;;
+		*) echo "Internal error!" ; exit 1 ;;
+	esac
+done
+
 ## echo colors and function ########################################################
 # Colors
 ESC_SEQ="\x1b["
@@ -67,32 +81,59 @@ done
 
 ## clone dotfiles repo from github #################################################
 
-cd $HOME
+cd $ZINUX_DIR
 action "Cloning repo from github"
-running "Cloning ${COL_CYAN}zinux"
-git clone --recurse-submodules https://github.com/liyzcj/zinux.git >/dev/null 2>&1
+running "Cloning ${COL_CYAN}zinux$COL_RESET into $ZINUX_DIR "
+git clone --recurse-submodules https://github.com/liyzcj/zinux.git >/dev/null 2>&1 
 check_success
-
-## Make soft link ##################################################################
-action "Making soft links"
+ZINUX_DIR=$(pwd)/zinux
+## Backup ####### ##################################################################
+if [ $BACKUP == 1 ] 
+then
 # creat backup folder
-if [ ! -d $BACKUP_DIR ]
-then
-	mkdir $BACKUP_DIR
+	action "Backup files"
+	if [ ! -d $BACKUP_DIR ] 
+	then
+		mkdir $BACKUP_DIR
+	fi
+else
+	action "Delete files"
 fi
+# backup >>>>>.zshrc
+if [ -f $HOME/.zshrc ] 
+then
+	if [ $BACKUP == 1 ] 
+	then
+		running "Backup ${COL_CYAN}.zshrc"
+		mv $HOME/.zshrc $BACKUP_DIR/zshrc
+		check_success
+	else
+		running "Delete ${COL_CYAN}.zshrc"
+		rm $HOME/.zshrc
+		check_success
+	fi
+fi
+# backup >>>>>.gitconfig
+if [ -f $HOME/.gitconfig ] 
+then
+	if [ $BACKUP == 1 ] 
+	then
+		running "Backup ${COL_CYAN}.gitconfig"
+		mv $HOME/.gitconfig $BACKUP_DIR/gitconfig
+		check_success
+	else
+		running "Delete ${COL_CYAN}.gitconfig"
+		rm $HOME/.gitconfig
+		check_success
+	fi
+fi
+## Make soft link ##################################################################
+action "Making soft links" 
 # >>>>>>>>>>  .zshrc
-if [ -f $HOME/.zshrc ]
-then
-	mv $HOME/.zshrc $BACKUP_DIR/zshrc
-fi
 running "Linking ${COL_CYAN}.zshrc"
 ln -s $ZINUX_DIR/zsh/zshrc_antigen $HOME/.zshrc
 check_success
 # >>>>>>>>>>  .gitconfig
-if [ -f $HOME/.gitconfig ]
-then
-	mv $HOME/.gitconfig $BACKUP_DIR/gitconfig
-fi
 running "Linking ${COL_CYAN}.gitconfig"
 ln -s $ZINUX_DIR/git/gitconfig $HOME/.gitconfig
 check_success
