@@ -1,4 +1,3 @@
-#!/bin/bash
 
 ##################################################
 ## This is configuration file for zsh            #
@@ -7,8 +6,7 @@
 
 
 # ================= Variable ===============
-ZINUX_DIR=$HOME/zinux
-
+ZINUX_DIR=$(pwd)
 
 # ================ Utilities ===============
 # enable 256 color to make auto-suggestions look nice
