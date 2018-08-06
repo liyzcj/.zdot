@@ -7,6 +7,8 @@
 
 ## Custmization ####################################################################
 ZINUX_DIR=$HOME
+LOG=/tmp/zinux_install.log
+touch $LOG
 BACKUP=1
 BACKUP_DIR=$HOME/backup_files
 requirement=(
@@ -26,7 +28,6 @@ while true ; do
 		*) echo "Internal error!" ; exit 1 ;;
 	esac
 done
-
 ## echo colors and function ########################################################
 # Colors
 ESC_SEQ="\x1b["
@@ -55,7 +56,7 @@ function action() {
 }
 
 function error() {
-	echo -e "$COL_RED[error]$COL_RESET "Failed!
+	echo -e "\t$COL_RED[error]$COL_RESET "Failed!
 }
 
 check_success() {
@@ -64,6 +65,7 @@ check_success() {
 		ok
 	else
 		error
+		echo "See '/tmp/zinux_install.log'!"
 		exit 1
 	fi
 }
@@ -77,7 +79,7 @@ action "Installing required packages"
 for pac in ${requirement[@]}
 do
 	running "Installing $COL_CYAN$pac"
-	sudo apt-get -y install $pac >/dev/null 2>&1
+	sudo apt-get -y install $pac >/dev/null 2>>$LOG
 	check_success
 done
 
@@ -86,7 +88,7 @@ done
 cd $ZINUX_DIR
 action "Cloning repo from github"
 running "Cloning ${COL_CYAN}zinux$COL_RESET into $ZINUX_DIR "
-git clone --recurse-submodules https://github.com/liyzcj/zinux.git >/dev/null 2>&1 
+git clone --recurse-submodules https://github.com/liyzcj/zinux.git >/dev/null 2>>$LOG
 check_success
 ZINUX_DIR=$ZINUX_DIR/zinux
 ## export $ZINUX_DIR into .zshrc
@@ -109,11 +111,11 @@ then
 	if [ $BACKUP == 1 ] 
 	then
 		running "Backup ${COL_CYAN}.zshrc"
-		mv $HOME/.zshrc $BACKUP_DIR/zshrc
+		mv $HOME/.zshrc $BACKUP_DIR/zshrc >>$LOG
 		check_success
 	else
 		running "Delete ${COL_CYAN}.zshrc"
-		rm $HOME/.zshrc
+		rm $HOME/.zshrc >>$LOG
 		check_success
 	fi
 fi
@@ -123,11 +125,11 @@ then
 	if [ $BACKUP == 1 ] 
 	then
 		running "Backup ${COL_CYAN}.gitconfig"
-		mv $HOME/.gitconfig $BACKUP_DIR/gitconfig
+		mv $HOME/.gitconfig $BACKUP_DIR/gitconfig >>$LOG
 		check_success
 	else
 		running "Delete ${COL_CYAN}.gitconfig"
-		rm $HOME/.gitconfig
+		rm $HOME/.gitconfig >>$LOG
 		check_success
 	fi
 fi
@@ -135,11 +137,11 @@ fi
 action "Making soft links" 
 # >>>>>>>>>>  .zshrc
 running "Linking ${COL_CYAN}.zshrc"
-ln -s $ZINUX_DIR/zsh/zshrc_antigen $HOME/.zshrc
+ln -s $ZINUX_DIR/zsh/zshrc_antigen $HOME/.zshrc >>$LOG
 check_success
 # >>>>>>>>>>  .gitconfig
 running "Linking ${COL_CYAN}.gitconfig"
-ln -s $ZINUX_DIR/git/gitconfig $HOME/.gitconfig
+ln -s $ZINUX_DIR/git/gitconfig $HOME/.gitconfig >>$LOG
 check_success
 
 ## change to zsh ##################################################################
@@ -152,5 +154,6 @@ zsh -i -c exit
 cp $ZINUX_DIR/zsh/pure.zsh $HOME/.antigen/bundles/sindresorhus/pure
 # cd $HOME/.antigen/bundles/sindresorhus/pure
 bot "Installation is finished, enjoy!"
+rm $LOG
 zsh
 
