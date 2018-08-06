@@ -86,7 +86,9 @@ action "Cloning repo from github"
 running "Cloning ${COL_CYAN}zinux$COL_RESET into $ZINUX_DIR "
 git clone --recurse-submodules https://github.com/liyzcj/zinux.git >/dev/null 2>&1 
 check_success
-ZINUX_DIR=$(pwd)/zinux
+ZINUX_DIR=$ZINUX_DIR/zinux
+## export $ZINUX_DIR into .zshrc
+sed -i "9s:.*:ZINUX_DIR=$ZINUX_DIR:g" $ZINUX_DIR/zsh/zshrc_antigen
 ## Backup ####### ##################################################################
 if [ $BACKUP == 1 ] 
 then

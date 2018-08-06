@@ -6,7 +6,7 @@
 
 
 # ================= Variable ===============
-ZINUX_DIR=$(pwd)
+ZINUX_DIR=/home/alex/zinux
 
 # ================ Utilities ===============
 # enable 256 color to make auto-suggestions look nice
