@@ -12,6 +12,7 @@ BACKUP_DIR=$HOME/backup_files
 requirement=(
 git
 zsh
+vim
 )
 ## options #########################################################################
 TEMP=`getopt -o t:n --long target:,nobackup -- "$@"`
@@ -63,6 +64,7 @@ check_success() {
 		ok
 	else
 		error
+		exit 1
 	fi
 }
 
