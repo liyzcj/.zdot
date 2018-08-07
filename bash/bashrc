@@ -1,1 +1,0 @@
-[ -n "$PS1" ] && source /home/alex/zinux/bash/bash_profile;
