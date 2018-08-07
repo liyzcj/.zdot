@@ -135,7 +135,7 @@ fi
 action "Making soft links" 
 # >>>>>>>>>>  .bashrc
 running "Linking ${COL_CYAN}.bashrc"
-echo "[ -n "$PS1" ] && source $ZINUX_DIR/bash/bash_profile;" > ~/.bashrc
+echo "[ -n \"\$PS1\" ] && source $ZINUX_DIR/bash/bash_profile;" > ~/.bashrc
 check_success
 # >>>>>>>>>>  .gitconfig
 running "Linking ${COL_CYAN}.gitconfig"
