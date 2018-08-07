@@ -35,6 +35,6 @@ Now you can **only** install in system depends **Debian**.
 ## Install
 
 ```shell
-wget https://raw.githubusercontent.com/liyzcj/zinux/master/install.sh && chmod 777 install.sh && ./install.sh
+wget --no-check-certificate https://raw.githubusercontent.com/liyzcj/zinux/master/install.sh && chmod 777 install.sh && ./install.sh
 ```
 
