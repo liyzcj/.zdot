@@ -103,17 +103,17 @@ then
 else
 	action "Delete files"
 fi
-# backup >>>>>.zshrc
+# backup >>>>>.bashrc
 if [ -f $HOME/.zshrc ] 
 then
 	if [ $BACKUP == 1 ] 
 	then
-		running "Backup ${COL_CYAN}.zshrc"
-		mv $HOME/.zshrc $BACKUP_DIR/zshrc >>$LOG
+		running "Backup ${COL_CYAN}.bashrc"
+		mv $HOME/.bashrc $BACKUP_DIR/bashrc >>$LOG
 		check_success
 	else
-		running "Delete ${COL_CYAN}.zshrc"
-		rm $HOME/.zshrc >>$LOG
+		running "Delete ${COL_CYAN}.bashrc"
+		rm $HOME/.bashrc >>$LOG
 		check_success
 	fi
 fi
@@ -133,7 +133,7 @@ then
 fi
 ## Make soft link ##################################################################
 action "Making soft links" 
-# >>>>>>>>>>  .zshrc
+# >>>>>>>>>>  .bashrc
 running "Linking ${COL_CYAN}.bashrc"
 echo "[ -n "$PS1" ] && source $ZINUX_DIR/bash/bash_profile;" > ~/.bashrc
 check_success
