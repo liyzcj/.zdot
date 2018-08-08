@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 ###
 # some colorized echo helpers
@@ -16,7 +16,7 @@ COL_MAGENTA=$ESC_SEQ"35;01m"
 COL_CYAN=$ESC_SEQ"36;01m"
 
 function ok() {
-    echo -e "\t\t\t$COL_GREEN[ok]$COL_RESET "$1
+    echo -e "$COL_GREEN[ok]$COL_RESET "$1
 }
 
 function bot() {
