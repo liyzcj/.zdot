@@ -22,13 +22,13 @@ function check() {
 
 
 bot "Hi! I'm going to install packages for you. Here I go..."
+
 action "Update"
 ## check the connection to apt repositories
-sourcelist=$(grep -ohr -E "https?://[a-zA-Z0-9\.\/_&=@$%?~#-]*" /etc/apt/sources.list | awk 'NR==1{print}')
-echo ">>>>>>>> source list = $sourcelist" >> $log
 running "Test connection"
-ping -c $sourcelist >> $log 2>&1
+ping -c 1 google.com >> $log 2>&1
 check
+
 ## update the apt 
 running "Update apt database"
 sudo apt-get update >> $log 2>&1 
@@ -41,3 +41,29 @@ do
 	sudo apt-get -y install $pac >>$log 2>&1
 	check
 done
+
+## upgrade all packages
+action "Upgrade"
+running "List upgradable packages"
+sudo apt list --upgradable
+bot "Do you want upgrade the packages?"
+read -p "[y/n]?: " res
+if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+	running "Upgrading"
+	sudo apt -y upgrade >>$log 2>&1
+	check
+fi
+
+## autoremove and clean unuseful packages!
+action "Package cleanup"
+running "Autoremove"
+sudo apt -y autoremove >>$log 2>&1
+check
+
+running "Autoclean"
+sudo apt -y autoclean >>$log 2>&1
+check
+
+echo -e "\nlog file : $COL_CYAN$log"
+bot "Installation is finished, enjoy!"

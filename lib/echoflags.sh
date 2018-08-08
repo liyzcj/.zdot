@@ -28,7 +28,7 @@ function running() {
 }
 
 function action() {
-    echo -e "\n$COL_YELLOW[action]:$COL_RESET\n ⇒ $1..."
+    echo -e "\n$COL_YELLOW[action]:$COL_RESET ⇒ $COL_MAGENTA$1..."
 }
 
 function warn() {
