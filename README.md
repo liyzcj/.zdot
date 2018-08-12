@@ -2,7 +2,7 @@
                                     **All the great configuration in my linux.**
 
 ## Screenshut
-<img src="screenshot.png" width="864">
+<img src="Screenshot.png" width="864">
 
 These are my own configurations when I'm using linux. If you like it, take it and just give me a star:).
 
