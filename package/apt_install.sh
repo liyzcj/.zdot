@@ -5,7 +5,7 @@
 # System : Debian, Ubuntu...
 # @author Li Yanzhe, 2018                              #
 # ######################################################
-source ../lib/echoflags.sh
+source ~/.zdot/lib/echoflags.sh
 log=/tmp/install_packages.log
 
 ## check function
@@ -21,7 +21,7 @@ function check() {
 }
 
 
-bot "Hi! I'm going to install packages for you. Here I go..."
+bot "Now I'm going to install packages for you."
 
 action "Update"
 ## check the connection to apt repositories
@@ -33,9 +33,8 @@ check
 running "Update apt database"
 sudo apt-get update >> $log 2>&1 
 check
-
 action "Install packages"
-for pac in $(sed 's/#.*//' ./package.list)
+for pac in $(sed 's/#.*//' ~/.zdot/package/package.list)
 do
 	running "Installing $COL_CYAN$pac"
 	sudo apt-get -y install $pac >>$log 2>&1
@@ -46,8 +45,8 @@ done
 action "Upgrade"
 running "List upgradable packages"
 sudo apt list --upgradable
-bot "Do you want upgrade the packages?"
-read -p "[y/n]?: " res
+bot "Do you want upgrade the packages? [y/n]:"
+read res
 if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
 	running "Upgrading"

@@ -1,4 +1,4 @@
-# Zinux
+# .Zdot
                                     **All the great configuration in my linux.**
 
 These are my own configurations when I'm using linux. If you like it, take it and just give me a star:).
@@ -11,13 +11,20 @@ Now you can **only** install in system depends **Debian**.
 
 ## Software
 
-- git
+- vim
 - zsh
+- stow
 
 ## Bash
 - .bashrc
+- .bash_prompt
+- .aliases
+- .exports
+
 ## Zsh
 - .zshrc
+- .zsh_alias
+
   Use **antigen** to manage the bundles of zsh. 
 
   Now include bundles below:
@@ -35,6 +42,11 @@ Now you can **only** install in system depends **Debian**.
 ## Install
 
 ```shell
-wget --no-check-certificate https://raw.githubusercontent.com/liyzcj/zinux/master/install.sh && chmod 777 install.sh && ./install.sh
+git clone --recursive https://github.com/liyzcj/.zdot.git
+cd .zdot
+# Use zsh
+./install.sh zsh
+# Use bash
+./install.sh bash
 ```
 

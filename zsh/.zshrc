@@ -72,6 +72,7 @@ ZSH_HIGHLIGHT_STYLES[redirection]='fg=160'
 ZSH_HIGHLIGHT_STYLES[comment]='fg=052,bold'
 ZSH_HIGHLIGHT_STYLES[arg0]='fg=036'
 ZSH_HIGHLIGHT_STYLES[builtin]='fg=028'
+ZSH_HIGHLIGHT_STYLES[default]='fg=205'
 
 
 
