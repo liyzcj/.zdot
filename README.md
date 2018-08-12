@@ -1,11 +1,14 @@
 # .Zdot
                                     **All the great configuration in my linux.**
 
+## Screenshut
+<img src="screenshot.png" width="864">
+
 These are my own configurations when I'm using linux. If you like it, take it and just give me a star:).
 
 My purpose is beautiful and easz-to-use linux.
 
-Zinux will automatic install the software you need, and soft link the configuration .zshrc into this repo.
+Zdot will automatic install the software you need, and soft link the configuration .zshrc into this repo.
 
 Now you can **only** install in system depends **Debian**.
 
