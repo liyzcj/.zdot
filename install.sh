@@ -25,6 +25,15 @@ if [ ! -d $backup ] ; then
 	mkdir $backup
 fi
 action "Install $1"
+
+## install pakcages ##############################
+bot "Install packages? [y/n]:"
+read res
+if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]]
+then
+	package/apt_install.sh
+fi
+
 ## Install bash or zsh ###########################
 case $1 in
 	zsh)
@@ -58,13 +67,7 @@ case $1 in
 		exit 1
 		;;
 esac
-## install pakcages ##############################
-bot "Install packages? [y/n]:"
-read res
-if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]]
-then
-	package/apt_install.sh
-fi
+
 
 ## install git ##################################
 bot "Install Git? [y/n]:"
