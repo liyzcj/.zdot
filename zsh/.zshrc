@@ -6,7 +6,7 @@
 
 
 # ================= Variable ===============
-zdot=/home/alex/.zdot
+zdot=~/.zdot
 
 # ================ Utilities ===============
 # enable 256 color to make auto-suggestions look nice

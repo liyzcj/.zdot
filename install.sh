@@ -51,6 +51,9 @@ case $1 in
 		running "Replace pure"
 		cp ~/.zdot/lib/pure.zsh ~/.antigen/bundles/sindresorhus/pure
 		check
+		running "Change Default shell"
+		chsh -s /bin/zsh
+		check
 		;;
 	bash)
 		running "Backup .bashrc"
