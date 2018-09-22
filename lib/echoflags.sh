@@ -38,3 +38,12 @@ function warn() {
 function error() {
     echo -e "$COL_RED[error]$COL_RESET "$1
 }
+
+function check() {
+	if [ $? == 0 ] ; then
+		ok
+	else
+		error
+		exit 1
+	fi
+}

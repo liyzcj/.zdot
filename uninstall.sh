@@ -2,29 +2,31 @@
 
 source lib/echoflags.sh
 
-function check() {
-	if [ $? == 0 ] ; then
-		ok
-	else
-		error
-		exit 1
-	fi
-}
 bot "Hi, I will uninstall git,$1~"
 
 ## uninstall git ################################
-bot "Uninstall Git? [y/n]:"
+bot "Uninstall Others? [y/n]:"
 read res
 if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
-	action "Uninstall git"
+	action "Uninstall others"
 	running "Remove git link"
 	if [ -L ~/.gitconfig ] ; then
 		rm ~/.gitconfig
 	fi
 	check
+	running "Remove Octave link"
+	if [ -L ~/.octaverc ] ; then
+		rm ~/.octaverc
+	fi
+	check
 	running "Restore git from backup"
 	if [ -f ~/zdot_backup/.gitconfig ] ; then
 		mv ~/zdot_backup/.gitconfig ~
+	fi
+	check
+	running "Restore octave from backup"
+	if [ -f ~/zdot_backup/.octaverc ] ; then
+		mv ~/zdot_backup/.octaverc ~
 	fi
 	check
 	running "Remove credentials"
@@ -67,6 +69,9 @@ case $1 in
 		if [ -f ~/.zsh_history ] ; then
 			rm ~/.zsh_history
 		fi
+		check
+		running "change default shell"
+		chsh -s /bin/bash
 		check
 		;;
 	*)

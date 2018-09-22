@@ -6,18 +6,7 @@
 # @author Li Yanzhe, 2018.                       #
 ##################################################
 backup=~/zdot_backup
-
 source lib/echoflags.sh
-## check function
-
-function check() {
-	if [ $? == 0 ] ; then
-		ok
-	else
-		error
-		exit 1
-	fi
-}
 
 bot "Hi! I will install packages,git,$1 for you!"
 
@@ -72,18 +61,23 @@ case $1 in
 esac
 
 
-## install git ##################################
-bot "Install Git? [y/n]:"
+## install others ##################################
+bot "Install Others:Git Octave? [y/n]:"
 read res
 if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
-	action "Install git"
+	action "Install Others"
 	running "Backup .gitconfig"
 	if [ -f ~/.gitconfig ] ; then
 		mv ~/.gitconfig $backup
 	fi
 	check
-	running "Install git"
-	stow git
+	running "Backup .octaverc"
+	if [ -f ~/.octaverc ] ; then
+		mv ~/.octaverc $backup
+	fi
+	check
+	running "Install others"
+	stow others
 	check
 fi
 
