@@ -12,3 +12,5 @@
 	tool = vimdiff
 [credential]
 	helper = store
+[core]
+	whitespace = cr-at-eol
