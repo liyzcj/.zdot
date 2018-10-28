@@ -20,7 +20,13 @@ bot "Install packages? [y/n]:"
 read res
 if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
-	package/apt_install.sh
+	if grep -Eqi "arch" /etc/issue || grep -Eqi "arch" /etc/*-release; then
+		package/pac_install.sh
+	elif grep -Eqi "arch" /etc/issue || grep -Eqi "arch" /etc/*-release; then
+		package/apt_install.sh
+	else
+		echo "Unknown Release!"
+	fi
 fi
 
 ## Install bash or zsh ###########################
