@@ -22,7 +22,7 @@ if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]]
 then
 	if grep -Eqi "arch" /etc/issue || grep -Eqi "arch" /etc/*-release; then
 		package/pac_install.sh
-	elif grep -Eqi "arch" /etc/issue || grep -Eqi "arch" /etc/*-release; then
+	elif grep -Eqi "ubuntu" /etc/issue || grep -Eqi "ubuntu" /etc/*-release; then
 		package/apt_install.sh
 	else
 		echo "Unknown Release!"
