@@ -10,7 +10,7 @@ zdot=~/.zdot
 
 # ================ Utilities ===============
 # enable 256 color to make auto-suggestions look nice
-# export TERM="xterm-256color"
+export TERM="xterm-256color"
 
 # zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.dll|*.exe|*.so|*.pyd'
 # zstyle ':completion:*:complete:-command-:*:*' ignored-patterns '*.pdf|*.exe|*.dll'
