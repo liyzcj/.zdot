@@ -17,6 +17,7 @@ export TERM="xterm-256color"
 # zstyle ':completion:*:(all-|)files' ignored-patterns '*.pdf|*.exe|*.dll'
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 bindkey -v                  # Use vim key bind
+bindkey '^_' autosuggest-execute # key for auto suggestion plugin
 
 # ================= ALIAS ==================
 test -r $zdot/lib/ls_colors && \
@@ -83,6 +84,7 @@ antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
+antigen bundle thewtex/tmux-mem-cpu-load
 
 antigen apply
 # ============ Finish antigen ==============
