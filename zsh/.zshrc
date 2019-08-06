@@ -84,7 +84,7 @@ antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
-antigen bundle thewtex/tmux-mem-cpu-load
+#antigen bundle thewtex/tmux-mem-cpu-load
 
 antigen apply
 # ============ Finish antigen ==============
