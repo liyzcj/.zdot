@@ -24,8 +24,11 @@ then
 		package/pac_install.sh
 	elif grep -Eqi "ubuntu" /etc/issue || grep -Eqi "ubuntu" /etc/*-release; then
 		package/apt_install.sh
+	elif grep -Eqi "debian" /etc/issue || grep -Eqi "debian" /etc/*-release; then
+		package/apt_install.sh
 	else
-		echo "Unknown Release!"
+		echo "Unknown Release version!"
+		exit 1
 	fi
 fi
 
