@@ -15,6 +15,17 @@ if [ ! -d $backup ] ; then
 fi
 action "Install $1"
 
+
+## Check submodule antigen #######################
+
+if [ ! -f "~/.zdot/zsh/antigen/antigen.zsh" ]; then
+	error "Antigen not detected!"
+	running "Updating antigen"
+	git submodule init
+	git submodule update --remote
+	check
+fi
+
 ## install pakcages ##############################
 bot "Install packages? [y/n]:"
 read res
@@ -27,7 +38,7 @@ then
 	elif grep -Eqi "debian" /etc/issue || grep -Eqi "debian" /etc/*-release; then
 		package/apt_install.sh
 	else
-		echo "Unknown Release version!"
+		error "Unknown Release version!"
 		exit 1
 	fi
 fi
