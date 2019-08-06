@@ -2,6 +2,13 @@
 
 source lib/echoflags.sh
 
+## Check parameter #############################
+
+if [[ $1 -ne "zsh" && $1 -ne "bash" ]] || [ ! $1 ]; then
+	error "No paramter (zsh|bash)"
+	exit 1
+fi
+
 bot "Hi, I will uninstall git,$1~"
 
 ## uninstall git ################################

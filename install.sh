@@ -8,6 +8,11 @@
 backup=~/zdot_backup
 source lib/echoflags.sh
 
+if [[ $1 -ne "zsh" && $1 -ne "bash" ]] || [ ! $1 ] ; then
+	error "Need parameter (zsh|bash)"
+	exit 1
+fi
+
 bot "Hi! I will install packages,git,$1 for you!"
 
 if [ ! -d $backup ] ; then
@@ -18,8 +23,8 @@ action "Install $1"
 
 ## Check submodule antigen #######################
 
-if [ ! -f "~/.zdot/zsh/antigen/antigen.zsh" ]; then
-	error "Antigen not detected!"
+if [ ! -f ~/.zdot/zsh/antigen/antigen.zsh ] ; then
+	warn "Antigen not detected!"
 	running "Updating antigen"
 	git submodule init
 	git submodule update --remote
