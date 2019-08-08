@@ -34,7 +34,7 @@ fi
 ## install pakcages ##############################
 bot "Install packages? [y/n]:"
 read res
-if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]]
+if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]] || [ ! $res ]
 then
 	if grep -Eqi "arch" /etc/issue || grep -Eqi "arch" /etc/*-release; then
 		package/pac_install.sh
@@ -89,7 +89,7 @@ esac
 ## install others ##################################
 bot "Install Others:Git Octave? [y/n]:"
 read res
-if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
+if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]] || [ ! $res ] ; then
 	action "Install Others"
 	running "Backup .gitconfig"
 	if [ -f ~/.gitconfig ] ; then
