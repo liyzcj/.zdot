@@ -36,6 +36,9 @@ Plugin 'gmarik/Vundle.vim'
 " add all your plugins here (note older versions of Vundle
 " used Bundle instead of Plugin)
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'Valloric/YouCompleteMe'
