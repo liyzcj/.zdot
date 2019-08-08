@@ -2,6 +2,22 @@
 
 source lib/echoflags.sh
 
+## Function ####################################
+
+function remove_restore() {
+	running "Remove $1 link"
+	if [ -L ~/$1 ] ; then
+		rm ~/$1
+	fi
+	check
+
+	running "Restore $1 from backup"
+	if [ -f ~/zdot_backup/$1 ] ; then
+		mv ~/zdot_backup/$1 ~
+	fi
+	check
+}
+
 ## Check parameter #############################
 
 if [[ $1 -ne "zsh" && $1 -ne "bash" ]] || [ ! $1 ]; then
@@ -16,26 +32,11 @@ bot "Uninstall Others? [y/n]:"
 read res
 if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
 	action "Uninstall others"
-	running "Remove git link"
-	if [ -L ~/.gitconfig ] ; then
-		rm ~/.gitconfig
-	fi
-	check
-	running "Remove Octave link"
-	if [ -L ~/.octaverc ] ; then
-		rm ~/.octaverc
-	fi
-	check
-	running "Restore git from backup"
-	if [ -f ~/zdot_backup/.gitconfig ] ; then
-		mv ~/zdot_backup/.gitconfig ~
-	fi
-	check
-	running "Restore octave from backup"
-	if [ -f ~/zdot_backup/.octaverc ] ; then
-		mv ~/zdot_backup/.octaverc ~
-	fi
-	check
+	remove_restore ".gitconfig"
+	remove_restore ".octaverc"
+	remove_restore ".tmux.conf"
+	remove_restore ".vimrc"
+
 	running "Remove credentials"
 	if [ -f ~/.git-credentials ] ; then
 		rm ~/.git-credentials
