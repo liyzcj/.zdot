@@ -20,6 +20,16 @@ if [ ! -d $backup ] ; then
 fi
 action "Install $1"
 
+## function ######################################
+
+function backup() {
+	running "Backup $1"
+	if [ -f ~/$1 ] ; then
+		mv ~/$1 $backup
+	fi
+	check
+}
+
 
 ## Check submodule antigen #######################
 
@@ -51,6 +61,9 @@ fi
 ## Install bash or zsh ###########################
 case $1 in
 	zsh)
+		running "Change Default shell"
+		chsh -s /bin/zsh
+		check
 		running "Backup .zshrc"
 		if [ -f ~/.zshrc ] ; then
 			mv ~/.zshrc $backup
@@ -64,9 +77,6 @@ case $1 in
 		check
 		running "Replace pure"
 		cp ~/.zdot/lib/pure.zsh ~/.antigen/bundles/sindresorhus/pure
-		check
-		running "Change Default shell"
-		chsh -s /bin/zsh
 		check
 		;;
 	bash)
@@ -87,24 +97,37 @@ esac
 
 
 ## install others ##################################
-bot "Install Others:Git Octave? [y/n]:"
+bot "Install Others:Git Octave vim tmux? [y/n]:"
 read res
 if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]] || [ ! $res ] ; then
 	action "Install Others"
-	running "Backup .gitconfig"
-	if [ -f ~/.gitconfig ] ; then
-		mv ~/.gitconfig $backup
-	fi
-	check
-	running "Backup .octaverc"
-	if [ -f ~/.octaverc ] ; then
-		mv ~/.octaverc $backup
-	fi
-	check
+	backup ".gitconfig"
+	backup ".octaverc"
+	backup ".tmux.conf"
+	backup ".vimrc"
+
 	running "Install others"
 	stow others
 	check
 fi
+
+## install vundle for vim ###########################
+
+running "Install vundle for vim"
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+check
+running "Install plugins for vim"
+vim +PluginInstall +qall
+check
+#running "Compile YCM"
+#python3 ~/.vim/bundle/YouCompleteMe/install.py
+#check
+running "Install tpm for tmux"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+check
+running "Install plugins for tmux"
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
+check
 
 ## Remove zdot_backup ###############################
 

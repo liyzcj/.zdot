@@ -1,3 +1,7 @@
 zsh
 vim
 stow
+build-essential
+cmake
+python3-dev
+tmux

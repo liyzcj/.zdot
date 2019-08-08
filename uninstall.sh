@@ -42,6 +42,22 @@ if [[ "$res" =~ ^([yY][eE][sS]|[yY])+$ ]] ; then
 		rm ~/.git-credentials
 	fi
 	check
+
+	running "Remove .cache"
+	if [ -d ~/.cache ] ; then
+		rm -rf ~/.cache
+	fi
+	check
+
+	running "Remove .vim"
+	rm -rf ~/.vim
+	check
+
+	running "Remove .tmux"
+	rm -rf ~/.tmux
+	check
+
+
 fi
 ## uninstall bash or zsh #######################
 action "Uninstall $1"
@@ -57,6 +73,9 @@ case $1 in
 		check
 		;;
 	zsh)
+		running "change default shell"
+		chsh -s /bin/bash
+		check
 		running "Remove zsh link"
 		stow -D zsh
 		check
@@ -77,9 +96,6 @@ case $1 in
 		if [ -f ~/.zsh_history ] ; then
 			rm ~/.zsh_history
 		fi
-		check
-		running "change default shell"
-		chsh -s /bin/bash
 		check
 		;;
 	*)
