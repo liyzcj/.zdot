@@ -120,13 +120,9 @@ let g:syntastic_check_on_wq = 0
 
 "configuration for indent line
 "缩进指示线"
-<<<<<<< HEAD
 let g:indentLine_bgcolor_term = 232
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_color_term = 28
-=======
-let g:indentLine_char='┆'
->>>>>>> ee24d61ae3c48cafdf19018e10348844af467a6a
 let g:indentLine_enabled = 1
 
 " shortcut for nerdcommenter

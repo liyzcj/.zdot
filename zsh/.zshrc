@@ -20,9 +20,18 @@ bindkey -v                  # Use vim key bind
 bindkey '^_' autosuggest-execute # key for auto suggestion plugin
 
 # ================= ALIAS ==================
-test -r $zdot/lib/ls_colors && \
-	eval "$(dircolors -b $zdot/lib/ls_colors)" \
-	|| eval "$(dircolors -b)"
+
+if [[ `uname -s` == "Darwin" ]]; then
+	export CLICOLOR=1
+	export LSCOLORS=gxfxcxdxbxegedabagacad
+	# only for mac
+	export PATH=/usr/local/bin:$PATH
+else
+	test -r $zdot/lib/ls_colors && \
+		eval "$(dircolors -b $zdot/lib/ls_colors)" \
+		|| eval "$(dircolors -b)"
+fi
+
 source $zdot/zsh/.zshrc_alias
 # ================ OPTION ==================
 setopt NO_BEEP              # Don't beep on errors.

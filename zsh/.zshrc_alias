@@ -7,9 +7,20 @@
 
 # enable color support of ls and also add handy aliases
 
-alias ls='ls --color=auto'
-#alias dir='dir --color=auto'
-#alias vdir='vdir --color=auto'
+if [[ `uname -s` == "Darwin" ]]; then
+	alias ls='ls -G'
+    alias ll='ls -lG'
+    alias la='ls -alG'
+    alias lrt='ls -lrtG'
+else
+	alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+    alias ll='ls -l'
+    alias la='ls -al'
+    alias lrt='ls -lrt'
+fi
+
 
 alias grep='grep --color=auto'
 #alias fgrep='fgrep --color=auto'
@@ -17,8 +28,15 @@ alias grep='grep --color=auto'
 
 # ================= Alias ==================
 
-alias ll='ls -l'
-alias la='ls -al'
-alias lrt='ls -lrt'
 
 alias vi='vim'
+
+
+# docker
+alias dc='docker container'
+alias dcls='docker container ls'
+alias dcla='docker container ls -a'
+alias di='docker image'
+alias dils='docker image ls'
+alias dila='docker image ls -a'
+alias dr='docker run'
