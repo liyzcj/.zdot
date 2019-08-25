@@ -52,6 +52,8 @@ then
 		package/apt_install.sh
 	elif grep -Eqi "debian" /etc/issue || grep -Eqi "debian" /etc/*-release; then
 		package/apt_install.sh
+	elif [ `uname -s` == "Darwin" ]; then
+		package/brew_install.sh
 	else
 		error "Unknown Release version!"
 		exit 1
@@ -119,9 +121,9 @@ check
 running "Install plugins for vim"
 vim +PluginInstall +qall
 check
-#running "Compile YCM"
-#python3 ~/.vim/bundle/YouCompleteMe/install.py
-#check
+running "Compile YCM"
+python3 ~/.vim/bundle/YouCompleteMe/install.py
+check
 running "Install tpm for tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 check

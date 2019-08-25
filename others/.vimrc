@@ -39,9 +39,8 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Vimjas/vim-python-pep8-indent'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -54,6 +53,23 @@ Plugin 'scrooloose/nerdcommenter'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Indentations
+set autoindent
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set expandtab
+set smarttab
+
+" python configuration
+au BufNewFile,BufRead *.py
+        \ set tabstop=4 |
+        \ set softtabstop=4 |
+        \ set shiftwidth=4 |
+        \ set textwidth=79 |
+        \ set expandtab |
+        \ set autoindent |
+        \ set fileformat=unix
 
 "python with virtualenv support
 "py << EOF
@@ -104,7 +120,13 @@ let g:syntastic_check_on_wq = 0
 
 "configuration for indent line
 "缩进指示线"
+<<<<<<< HEAD
+let g:indentLine_bgcolor_term = 232
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_color_term = 28
+=======
 let g:indentLine_char='┆'
+>>>>>>> ee24d61ae3c48cafdf19018e10348844af467a6a
 let g:indentLine_enabled = 1
 
 " shortcut for nerdcommenter
