@@ -71,6 +71,16 @@ au BufNewFile,BufRead *.py
         \ set autoindent |
         \ set fileformat=unix
 
+" python configuration
+au BufNewFile,BufRead *.yaml
+        \ set tabstop=2 |
+        \ set softtabstop=2 |
+        \ set shiftwidth=2 |
+        \ set textwidth=79 |
+        \ set expandtab |
+        \ set autoindent |
+        \ set fileformat=unix
+
 "python with virtualenv support
 "py << EOF
 "import os
