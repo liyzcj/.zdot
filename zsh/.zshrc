@@ -97,3 +97,12 @@ antigen bundle sindresorhus/pure
 
 antigen apply
 # ============ Finish antigen ==============
+
+# socks5
+#export all_proxy=socks5://127.0.0.1:1086
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/liyzcj/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/liyzcj/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/liyzcj/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/liyzcj/google-cloud-sdk/completion.zsh.inc'; fi

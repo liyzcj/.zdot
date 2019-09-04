@@ -5,8 +5,9 @@
 # This script will link the dotfiles.            #
 # @author Li Yanzhe, 2019.                       #
 ##################################################
+ZDOT_ROOT=$HOME/.zdot
 backup=~/zdot_backup
-source lib/echoflags.sh
+source $ZDOT_ROOT/lib/echoflags.sh
 
 bot "Starting Install .zdot"
 
@@ -46,7 +47,7 @@ if [ -f ~/.zshrc ] ; then
 fi
 check
 running "Stow zsh"
-stow --ignore=antigen zsh
+stow --ignore=antigen -d $ZDOT_ROOT -t $HOME zsh
 check
 running "Install plugins\n"
 zsh -i -c exit
@@ -64,7 +65,7 @@ backup ".tmux.conf"
 backup ".vimrc"
 
 running "Install others"
-stow others
+stow -d $ZDOT_ROOT -t $HOME others
 check
 
 ## install vundle for vim ###########################
