@@ -1,6 +1,6 @@
 [user]
-	name = liyzcj
-	email = liyz0912@gmail.com
+	name = Li Yanzhe
+	email = liyanzhe@senses-ai.com
 [alias]
 	last = log -1 HEAD
 	tt = log --graph --oneline -10 HEAD
