@@ -8,7 +8,7 @@
 # enable color support of ls and also add handy aliases
 
 if [[ `uname -s` == "Darwin" ]]; then
-	alias ls='ls -G'
+    alias ls='ls -G'
     alias ll='ls -lG'
     alias la='ls -alG'
     alias lrt='ls -lrtG'
@@ -40,3 +40,9 @@ alias di='docker image'
 alias dils='docker image ls'
 alias dila='docker image ls -a'
 alias dr='docker run'
+
+# CD Stuff
+alias .='ll'
+alias ..='cd .. && ll'
+alias ...='cd ../.. && ll'
+alias ~='cd ~'
