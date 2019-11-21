@@ -99,4 +99,4 @@ antigen apply
 # ============ Finish antigen ==============
 
 # socks5
-export all_proxy=socks5://127.0.0.1:1086
+#export all_proxy=socks5://127.0.0.1:1086
