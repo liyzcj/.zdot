@@ -102,4 +102,4 @@ antigen apply
 #export all_proxy=socks5://127.0.0.1:1086
 
 # hadoop
-source env/hadoop_config/hadoop_env.sh
+source /env/hadoop_config/hadoop_env.sh
