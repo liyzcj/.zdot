@@ -46,3 +46,8 @@ alias .='ll'
 alias ..='cd .. && ll'
 alias ...='cd ../.. && ll'
 alias ~='cd ~'
+
+# tmux
+
+alias ta='tmux a'
+alias ts='tmux new -s'
