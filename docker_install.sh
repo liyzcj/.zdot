@@ -52,9 +52,6 @@ check
 running "Install plugins\n"
 zsh -i -c exit
 check
-running "Replace pure"
-cp ~/.zdot/lib/pure.zsh ~/.antigen/bundles/sindresorhus/pure
-check
 
 
 ## install others ##################################

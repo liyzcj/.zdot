@@ -77,9 +77,6 @@ case $1 in
 		running "Install plugins\n"
 		zsh -i -c exit
 		check
-		running "Replace pure"
-		cp ~/.zdot/lib/pure.zsh ~/.antigen/bundles/sindresorhus/pure
-		check
 		;;
 	bash)
 		running "Backup .bashrc"

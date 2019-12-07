@@ -98,5 +98,12 @@ antigen bundle sindresorhus/pure
 antigen apply
 # ============ Finish antigen ==============
 
+# =============== Pure ================
+zstyle :prompt:pure:path color 039
+zstyle :prompt:pure:prompt:success color 048
+zstyle :prompt:pure:git:branch color 214
+zstyle :prompt:pure:git:dirty color 198
+# =========== Finish Pure =============
+
 # socks5
 #export all_proxy=socks5://127.0.0.1:1086
