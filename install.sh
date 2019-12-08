@@ -31,15 +31,10 @@ function backup() {
 }
 
 
-## Check submodule antigen #######################
+## install antigen #######################
 
-if [ ! -f ~/.zdot/zsh/antigen/antigen.zsh ] ; then
-	warn "Antigen not detected!"
-	running "Updating antigen"
-	git submodule init
-	git submodule update --remote
-	check
-fi
+git clone https://github.com/zsh-users/antigen.git $HOME/.antigen/antigen
+check
 
 ## install pakcages ##############################
 bot "Install packages? [y/n]:"

@@ -4,10 +4,6 @@
 ## @author Li Yanzhe, 2018.                      #
 ##################################################
 
-
-# ================= Variable ===============
-zdot=~/.zdot
-
 # ================ Utilities ===============
 # enable 256 color to make auto-suggestions look nice
 export TERM="xterm-256color"
@@ -27,12 +23,12 @@ if [[ `uname -s` == "Darwin" ]]; then
 	# only for mac
 	export PATH=/usr/local/bin:$PATH
 else
-	test -r $zdot/lib/ls_colors && \
-		eval "$(dircolors -b $zdot/lib/ls_colors)" \
+	test -r $HOME/.ls_colors && \
+		eval "$(dircolors -b $HOME/.ls_colors)" \
 		|| eval "$(dircolors -b)"
 fi
 
-source $zdot/zsh/.zshrc_alias
+source $HOME/.zshrc_alias
 # ================ OPTION ==================
 setopt NO_BEEP              # Don't beep on errors.
 setopt EXTENDED_GLOB        # User #, ~ and ^ in patterns.
@@ -52,7 +48,7 @@ setopt INC_APPEND_HISTORY   # Save history as it happens
 
 # ============ Initialize antigen ==========
 # NTIGEN_MUTEX=false
-source "$zdot/zsh/antigen/antigen.zsh"
+source "$HOME/.antigen/antigen/antigen.zsh"
 
 # ===== Hightlighter ====
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
