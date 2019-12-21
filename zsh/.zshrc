@@ -107,5 +107,5 @@ zstyle :prompt:pure:git:dirty color 198
 # Go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export GO111MODULE=on
+export GO111MODULE=auto
 export GOPROXY=https://goproxy.cn
