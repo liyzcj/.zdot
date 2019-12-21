@@ -103,3 +103,9 @@ zstyle :prompt:pure:git:dirty color 198
 
 # socks5
 #export all_proxy=socks5://127.0.0.1:1086
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
