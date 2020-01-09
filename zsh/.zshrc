@@ -38,6 +38,9 @@ setopt NO_BG_NICE
 setopt AUTO_PUSHD           # Make cd works like pushd
 setopt PUSHD_IGNORE_DUPS    # Only one instance of dir on stack
 
+# set nomatch https://unix.stackexchange.com/questions/310540/how-to-get-rid-of-no-match-found-when-running-rm
+setopt +o nomatch
+
 # ============ History commands ============
 HISTSIZE=100
 SAVEHIST=1000
