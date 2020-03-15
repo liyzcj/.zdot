@@ -14,6 +14,7 @@ export TERM="xterm-256color"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 bindkey -v                  # Use vim key bind
 bindkey '^_' autosuggest-execute # key for auto suggestion plugin
+bindkey '^R' history-incremental-search-backward
 
 # ================= ALIAS ==================
 
@@ -105,7 +106,7 @@ zstyle :prompt:pure:git:dirty color 198
 # =========== Finish Pure =============
 
 # socks5
-#export all_proxy=socks5://127.0.0.1:1086
+# export all_proxy=liyzcj:liYANzhe@127.0.0.1:1086
 
 # Go
 export GOPATH=$HOME/go

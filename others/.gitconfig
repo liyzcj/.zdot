@@ -18,3 +18,5 @@
 	helper = store
 [core]
 	whitespace = cr-at-eol
+[push]
+	followTags = true
