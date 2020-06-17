@@ -111,23 +111,23 @@ fi
 
 ## install vundle for vim ###########################
 
-running "Install vundle for vim"
+running "Install vundle for vim \n"
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 check
 
-running "Install plugins for vim"
+running "Install plugins for vim \n"
 vim +PluginInstall +qall
 check
 
-running "Compile YCM"
+running "Compile YCM \n"
 python3 ~/.vim/bundle/YouCompleteMe/install.py
 check
 
-running "Install tpm for tmux"
+running "Install tpm for tmux \n"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 check
 
-running "Install plugins for tmux"
+running "Install plugins for tmux \n"
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 check
 
