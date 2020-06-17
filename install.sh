@@ -31,11 +31,6 @@ function backup() {
 }
 
 
-## install antigen #######################
-
-git clone https://github.com/zsh-users/antigen.git $HOME/.antigen/antigen
-check
-
 ## install pakcages ##############################
 bot "Install packages? [y/n]:"
 read res
@@ -61,13 +56,22 @@ case $1 in
 		running "Change Default shell"
 		chsh -s /bin/zsh
 		check
+        
+        running "Install Antigen"
+        if [ -e $HOME/.antigen ]; then
+            error "Antigen Exists."
+            exit 1
+        fi
+        git clone https://github.com/zsh-users/antigen.git $HOME/.antigen/antigen
+        check
+
 		running "Backup .zshrc"
 		if [ -f ~/.zshrc ] ; then
 			mv ~/.zshrc $backup
 		fi
 		check
 		running "Stow zsh"
-		stow --ignore=antigen zsh
+		stow zsh
 		check
 		running "Install plugins\n"
 		zsh -i -c exit
@@ -110,15 +114,19 @@ fi
 running "Install vundle for vim"
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 check
+
 running "Install plugins for vim"
 vim +PluginInstall +qall
 check
+
 running "Compile YCM"
 python3 ~/.vim/bundle/YouCompleteMe/install.py
 check
+
 running "Install tpm for tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 check
+
 running "Install plugins for tmux"
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 check
