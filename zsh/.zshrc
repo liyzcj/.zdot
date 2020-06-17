@@ -87,13 +87,11 @@ ZSH_HIGHLIGHT_STYLES[default]='fg=205'
 
 
 # ======= Plugins =======
-# antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle ael-code/zsh-colored-man-pages
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle mafredri/zsh-async
 antigen bundle sindresorhus/pure
-#antigen bundle thewtex/tmux-mem-cpu-load
 
 antigen apply
 # ============ Finish antigen ==============
@@ -104,9 +102,6 @@ zstyle :prompt:pure:prompt:success color 048
 zstyle :prompt:pure:git:branch color 214
 zstyle :prompt:pure:git:dirty color 198
 # =========== Finish Pure =============
-
-# socks5
-# export all_proxy=liyzcj:liYANzhe@127.0.0.1:1086
 
 # Go
 export GOPATH=$HOME/go
