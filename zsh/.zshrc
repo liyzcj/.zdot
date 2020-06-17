@@ -108,3 +108,10 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=auto
 export GOPROXY=https://goproxy.cn
+
+# Custom config
+CUSTOMRC=$HOME/.customrc
+
+if [ -e $CUSTOMRC ]; then
+    source $CUSTOMRC
+fi
