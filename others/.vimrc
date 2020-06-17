@@ -8,6 +8,13 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 
+" Mouse Scroll Speed
+map <ScrollWheelUp> <C-Y>
+map <S-ScrollWheelUp> <C-U>
+map <ScrollWheelDown> <C-E>
+map <S-ScrollWheelDown> <C-D>
+
+
 " Enable folding with the spacebar
 nnoremap <space> za
 let g:SimpylFold_docstring_preview=1
